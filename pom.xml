@@ -39,6 +39,7 @@
     <module>baidu-hot-search</module>
     <module>baidu-search</module>
     <module>web-scraper</module>
+    <module>extract-web-page-content</module>
   </modules>
 
   <properties>

@@ -2,6 +2,7 @@ package io.github.llmagentbuilder.webscraper
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import org.jsoup.safety.Safelist
 
 data class LinkItem(val title: String, val href: String)
 
@@ -16,6 +17,24 @@ object WebScraper {
         return doc.select(query).map {
             LinkItem(it.text(), it.attribute("href").value)
         }
+    }
+
+    fun allText(url: String): String {
+        val doc = load(url)
+        doc.select("*").removeAttr("style")
+        listOf(
+            "script",
+            "style",
+            "link",
+            "textarea",
+            "input",
+            "button"
+        ).forEach {
+            doc.select(it).remove()
+        }
+        doc.select("a").unwrap()
+        val body = doc.body()
+        return Jsoup.clean(body.html(), Safelist.none()).trim()
     }
 
     private fun load(url: String): Document {
