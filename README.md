@@ -4,3 +4,4 @@ Tools in this toolkit:
 
 * `baiduSearch`
 * `baiduHotSearch`
+* `extractWebPageContent`
