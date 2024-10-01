@@ -20,7 +20,7 @@ class BaiduHotSearchTool(private val config: BaiduHotSearchConfig) :
             WebScraper.textList(
                 "https://top.baidu.com/board?tab=realtime",
                 ".c-single-text-ellipsis"
-            ).take(config.numberOfItems.coerceAtLeast(1))
+            ).take((config.numberOfItems ?: 10).coerceAtLeast(1))
         )
     }
 

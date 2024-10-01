@@ -22,7 +22,7 @@ class BaiduSearchTool(private val config: BaiduSearchConfig) :
                 ".c-container h3 a"
             ).map {
                 BaiduSearchResultItem(it.title, it.href)
-            }.take(config.numberOfItems.coerceAtLeast(1))
+            }.take((config.numberOfItems ?: 10).coerceAtLeast(1))
         )
     }
 

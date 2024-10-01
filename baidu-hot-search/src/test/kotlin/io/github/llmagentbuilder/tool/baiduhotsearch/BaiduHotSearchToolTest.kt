@@ -8,10 +8,10 @@ class BaiduHotSearchToolTest {
     @Test
     fun find() {
         val results = BaiduHotSearchTool(BaiduHotSearchConfig()).apply(
-            BaiduHotSearchRequest()
+            BaiduHotSearchRequest(10)
         )
             .results
         assertNotNull(results)
-        assertEquals(10, results.size)
+        assertEquals(10, results?.size)
     }
 }
