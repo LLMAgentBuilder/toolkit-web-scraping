@@ -10,7 +10,7 @@ class ExtractWebPageContentTool(private val config: ExtractWebPageContentConfig)
     override fun apply(request: ExtractWebPageContentRequest): ExtractWebPageContentResponse {
         return ExtractWebPageContentResponse(
             WebScraper.allText(request.url)
-                .take(config.sizeLimit.coerceAtLeast(50))
+                .take((config.sizeLimit ?: 1000).coerceAtLeast(50))
         )
     }
 
