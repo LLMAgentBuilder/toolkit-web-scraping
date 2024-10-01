@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.llmagentbuilder</groupId>
     <artifactId>toolkit-web-scraping</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
   </parent>
 
   <artifactId>tool-baidu-search</artifactId>
