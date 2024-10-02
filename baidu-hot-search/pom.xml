@@ -13,6 +13,12 @@
   <name>LLM Agent Builder :: Tool :: Baidu Hot Search</name>
   <description>LLM Agent Builder :: Tool :: Baidu Hot Search</description>
 
+  <properties>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>io.github.llmagentbuilder</groupId>

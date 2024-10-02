@@ -1,16 +1,14 @@
 package io.github.llmagentbuilder.tool.baiduhotsearch
 
-import io.github.llmagentbuilder.core.tool.EnvironmentVariableConfigurableAgentToolFactory
+import io.github.llmagentbuilder.core.tool.ConfigurableAgentToolFactory
 
 class BaiduHotSearchToolFactory :
-    EnvironmentVariableConfigurableAgentToolFactory<BaiduHotSearchTool, BaiduHotSearchConfig>(
-        BaiduHotSearchConfig::class.java, "${toolName}_"
-    ) {
-    override fun configName(): String {
-        return toolName
+    ConfigurableAgentToolFactory<BaiduHotSearchConfig, BaiduHotSearchTool> {
+    override fun toolId(): String {
+        return toolId
     }
 
-    override fun create(config: BaiduHotSearchConfig): BaiduHotSearchTool {
+    override fun create(config: BaiduHotSearchConfig?): BaiduHotSearchTool {
         return BaiduHotSearchTool(config)
     }
 

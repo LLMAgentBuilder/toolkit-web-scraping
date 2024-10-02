@@ -4,9 +4,9 @@ import io.github.llmagentbuilder.core.tool.ConfigurableAgentTool
 import io.github.llmagentbuilder.webscraper.WebScraper
 import org.slf4j.LoggerFactory
 
-const val toolName = "baiduHotSearch"
+const val toolId = "baiduHotSearch"
 
-class BaiduHotSearchTool(private val config: BaiduHotSearchConfig) :
+class BaiduHotSearchTool(private val config: BaiduHotSearchConfig?) :
     ConfigurableAgentTool<BaiduHotSearchRequest, BaiduHotSearchResponse, BaiduHotSearchConfig> {
 
     private val logger = LoggerFactory.getLogger(javaClass)
@@ -20,7 +20,7 @@ class BaiduHotSearchTool(private val config: BaiduHotSearchConfig) :
             WebScraper.textList(
                 "https://top.baidu.com/board?tab=realtime",
                 ".c-single-text-ellipsis"
-            ).take((config.numberOfItems ?: 10).coerceAtLeast(1))
+            ).take((config?.numberOfItems ?: 10).coerceAtLeast(1))
         )
     }
 
@@ -28,8 +28,11 @@ class BaiduHotSearchTool(private val config: BaiduHotSearchConfig) :
         return "find hot search keywords in Baidu"
     }
 
-    override fun name(): String {
-        return toolName
+    override fun id(): String {
+        return toolId
     }
 
+    override fun name(): String {
+        return "Baidu search hot words"
+    }
 }

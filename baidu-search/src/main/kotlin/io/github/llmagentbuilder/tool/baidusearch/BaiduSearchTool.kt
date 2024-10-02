@@ -4,9 +4,9 @@ import io.github.llmagentbuilder.core.tool.ConfigurableAgentTool
 import io.github.llmagentbuilder.webscraper.WebScraper
 import org.slf4j.LoggerFactory
 
-const val toolName = "baiduSearch"
+const val toolId = "baiduSearch"
 
-class BaiduSearchTool(private val config: BaiduSearchConfig) :
+class BaiduSearchTool(private val config: BaiduSearchConfig?) :
     ConfigurableAgentTool<BaiduSearchRequest, BaiduSearchResponse, BaiduSearchConfig> {
 
     private val logger = LoggerFactory.getLogger(javaClass)
@@ -22,16 +22,19 @@ class BaiduSearchTool(private val config: BaiduSearchConfig) :
                 ".c-container h3 a"
             ).map {
                 BaiduSearchResultItem(it.title, it.href)
-            }.take((config.numberOfItems ?: 10).coerceAtLeast(1))
+            }.take((config?.numberOfItems ?: 10).coerceAtLeast(1))
         )
     }
 
     override fun description(): String {
-        return "search web using Baidu"
+        return "Search web content using Baidu"
+    }
+
+    override fun id(): String {
+        return toolId
     }
 
     override fun name(): String {
-        return toolName
+        return "Baidu search"
     }
-
 }
