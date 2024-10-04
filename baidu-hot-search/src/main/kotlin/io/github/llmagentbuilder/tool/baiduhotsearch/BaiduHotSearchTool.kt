@@ -33,6 +33,6 @@ class BaiduHotSearchTool(private val config: BaiduHotSearchConfig?) :
     }
 
     override fun name(): String {
-        return "Baidu search hot words"
+        return toolId
     }
 }

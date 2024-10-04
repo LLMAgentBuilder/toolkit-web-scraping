@@ -31,6 +31,6 @@ class ExtractWebPageContentTool(private val config: ExtractWebPageContentConfig?
     }
 
     override fun name(): String {
-        return "Extract web page content"
+        return toolId
     }
 }

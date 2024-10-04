@@ -35,6 +35,6 @@ class BaiduSearchTool(private val config: BaiduSearchConfig?) :
     }
 
     override fun name(): String {
-        return "Baidu search"
+        return toolId
     }
 }
